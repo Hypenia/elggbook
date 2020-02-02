@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest xmlns="http://www.elgg.org/plugin_manifest/1.8">
+	<name>ElggBook</name>
+	<id>elggbook</id>
+	<version>3.0</version>
+
+	<category>themes</category>
+	<description>ElggBook 3.0 Theme.</description>
+
+  <author>David Onche (daveonche@gmail.com)</author>
+	<website>https://biz.hypenia.com/</website>
+	<repository>https://github.com/Hypenia/elggbook</repository>
+	<bugtracker>https://github.com/Hypenia/elggbook/issues</bugtracker>
+	<copyright>(C) 2020, Hypenia DesigN'Code Studios</copyright>
+	<license>GNU General Public License version 2</license>
+	
+	<requires>
+		<type>elgg_release</type>
+		<version>3.0</version>
+	</requires>
+
+	<requires>
+		<type>plugin</type>
+		<name>profile_cover</name>
+	</requires>
+
+</plugin_manifest>

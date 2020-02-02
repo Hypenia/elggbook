@@ -1,0 +1,17 @@
+{
+	"name": "hypenia/elggbook",
+	"description": "ElggBook 3.0 Theme.",
+	"type": "elgg-plugin",
+	"keywords": ["elgg", "plugin", "themes"],
+	"license": "GPL-2.0-only",
+	"support": {
+		"source": "https://github.com/Hypenia/elggbook",
+		"issues": "https://github.com/Hypenia/elggbook/issues"
+	},
+	"require": {
+		"composer/installers": "^1.0.8",
+	},
+	"conflict": {
+		"elgg/elgg": "<3.0"
+	}
+}
