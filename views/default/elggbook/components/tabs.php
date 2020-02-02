@@ -131,6 +131,14 @@ if ($tab instanceof ElggGroup) {
         $pageowner = elgg_get_page_owner_entity();
         $friendrequest = (bool) elgg_get_plugin_setting('friend_request', 'friends');
 
+        $request_options = [
+            'relationship_guid' => $pageowner->guid,
+            'relationship' => 'friendrequest',
+            'inverse_relationship' => true,
+            'type' => 'user',
+            'no_results' => elgg_echo('friends:request:pending:none'),
+        ];
+
         $friend_options = [
             'relationship' => 'friend',
             'relationship_guid' => $pageowner->getGUID(),
@@ -149,12 +157,31 @@ if ($tab instanceof ElggGroup) {
             'list_class' => 'elgg-list-users',
         ];
 
-        $mf = elgg_list_entities($friend_options);
+        if ($pageowner->guid == elgg_get_logged_in_user_guid()) {
+            $mf = elgg_list_relationships($request_options);
+        }
+
+        $mf .= elgg_list_entities($friend_options);
+
+        // friends request
+        $badge = null;
+        if ($friendrequest && $pageowner->guid == elgg_get_logged_in_user_guid()) {
+        $count_request = elgg_get_relationships([
+            'type' => 'user',
+            'relationship_guid' => $tab,
+               'relationship' => 'friendrequest',
+               'inverse_relationship' => true,
+              'count' => true,
+        ]);
+            if ($count_request > 0) {
+                $badge = $count_request;
+            }
+        }
 
         // Count user friends
-        $count_friends = $pageowner->getFriends(['count' => TRUE]);
+        $count_friends = elgg_count_entities($friend_options);
 
-        $mf_text = elgg_echo('tab:friends') . " ({$count_friends})";
+        $mf_text = "<span class='elgg-badge'> {$badge} </span> ". elgg_echo('tab:friends') . " ({$count_friends})";
     }
 
     // User files
