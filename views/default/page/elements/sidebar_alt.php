@@ -7,12 +7,7 @@
  * @uses $vars['sidebar_alt] HTML content for the alternate sidebar
  */
 
-$page_menu = elgg_view_menu('page', ['sort_by' => 'name']);
-if ($page_menu) {
-	$sidebar = elgg_view_module('info', '', $page_menu, [
-		'class' => 'elgg-page-menu',
-	]);
-}
+$sidebar = elgg_view('page/elements/page_menu', $vars);
 
 if (!elgg_in_context('profile')) {
     $sidebar .= elgg_view('page/elements/owner_block', $vars);

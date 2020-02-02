@@ -8,12 +8,12 @@
 
 $item = elgg_extract('item', $vars);
 if (!$item instanceof ElggRiverItem) {
-    return;
+	return;
 }
 
 $object = $item->getObjectEntity();
 if (!$object instanceof ElggObject) {
-    return;
+	return;
 }
 
 // CUSTOM CHANGE: Display attachements in river activity
